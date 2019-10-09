@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:my_wallet/app/cards/cards.dart';
 
 class App extends StatefulWidget {
   App({Key key}) : super(key: key);
@@ -24,18 +25,17 @@ class _AppState extends State<App> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      body: PageView(
-        controller: _pageController,
-        children: <Widget>[
-          Container(
-            color: Colors.grey[100],
-            child: Icon(Icons.credit_card),
-          ),
-          Container(
-            color: Colors.grey[100],
-            child: Icon(Icons.settings),
-          ),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          children: <Widget>[
+            Cards(),
+            Container(
+              color: Colors.grey[100],
+              child: Icon(Icons.settings),
+            ),
+          ],
+        ),
       ),
 
       bottomNavigationBar: BottomAppBar(
