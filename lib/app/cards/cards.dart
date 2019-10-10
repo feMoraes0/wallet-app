@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:my_wallet/app/user/user.dart';
 
 class Cards extends StatefulWidget {
   @override
@@ -11,9 +12,7 @@ class _CardsState extends State<Cards> {
   PageController _pageController = PageController(initialPage: 0);
 
   changePage(int index) {
-    this.setState(() {
-      this.page = index;
-    });
+    this.setState(() { this.page = index; });
     this._pageController.animateToPage(index, duration: Duration(milliseconds: 200), curve: Curves.decelerate);
   }
 
@@ -75,38 +74,85 @@ class _CardsState extends State<Cards> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 }
 
-class Wallet extends StatelessWidget {
+class Wallet extends StatefulWidget {
+  @override
+  _WalletState createState() => _WalletState();
+}
+
+class _WalletState extends State<Wallet> {
+  int page = 0;
+
+  changePage(newPage) {
+    this.setState(() {
+      this.page = newPage;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageView(
+      controller: PageController(viewportFraction: 0.85),
       scrollDirection: Axis.horizontal,
+      onPageChanged: this.changePage,
       children: <Widget>[
-        PageCard(),
-        PageCard(),
-        PageCard(),
+        PageCard(active: (this.page == 0) ?  true : false),
+        PageCard(active: (this.page == 1) ?  true : false),
+        PageCard(active: (this.page == 2) ?  true : false),
+        Container(color: Colors.redAccent,),
       ],
     );
   }
 }
 
-class User extends StatelessWidget {
+
+class PageCard extends StatelessWidget {
+
+  bool active;
+
+  PageCard({@required this.active});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.deepOrangeAccent,
+    return SafeArea(
+      child: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Card(active: this.active),
+              ],
+            )
+          ),
+        ),
     );
   }
 }
 
-class PageCard extends StatelessWidget {
+class Card extends StatelessWidget {
+
+  bool active;
+
+  Card({@required this.active});
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Center(child: Icon(Icons.check)),
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width,
+      margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: (this.active) ? 0.0 : 15.0),
+      height: (this.active) ? 200.0 : 170.0,
+      decoration: BoxDecoration(
+        color: Colors.pinkAccent,
+        borderRadius: BorderRadius.circular(20.0),
       ),
     );
   }
 }
+
