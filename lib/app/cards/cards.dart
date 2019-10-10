@@ -1,189 +1,111 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
-class Cards extends StatelessWidget {
+class Cards extends StatefulWidget {
+  @override
+  _CardsState createState() => _CardsState();
+}
+
+class _CardsState extends State<Cards> {
+  int page = 0;
+  PageController _pageController = PageController(initialPage: 0);
+
+  changePage(int index) {
+    this.setState(() {
+      this.page = index;
+    });
+    this._pageController.animateToPage(index, duration: Duration(milliseconds: 200), curve: Curves.decelerate);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: 10.0),
-          child: Column(
+      backgroundColor: Colors.grey[100],
+      body: PageView(
+        controller: _pageController,
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Wallet(),
+          User(),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 10.0,
+        child: Container(
+          height: 55.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    InkWell(
-                      borderRadius: BorderRadius.circular(360.0),
-                      onTap: () { print("Hello World 2"); },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(Icons.account_balance_wallet, size: 30.0),
-                      ),
-                    ),
-                    Text(
-                      "Cards",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30.0,
-                      ),
-                    ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(360.0),
-                      onTap: () { print("Hello World"); },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(Icons.add, size: 30.0),
-                      ),
-                    )
-                  ],
+              InkWell(
+                onTap: () {
+                  this.changePage(0);
+                },
+                child: Container(
+                  width: size.width / 2 - 35,
+                  child: IconButton(
+                    icon: Icon(Icons.account_balance_wallet, size: 26.0),
+                    onPressed: null,
+                  ),
                 ),
               ),
-              CreditCard(),
-              EventCard(),
-              CreditCard(),
-              EventCard(),
-              CreditCard(),
-              EventCard(),
+              InkWell(
+                onTap: () {
+                  this.changePage(1);
+                },
+                child: Container(
+                  width: size.width / 2 - 35,
+                  child: IconButton(
+                    icon: Icon(Icons.person_outline, size: 26.0),
+                    onPressed: null,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
+        disabledElevation: 2.0,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
 
-class CreditCard extends StatelessWidget {
+class Wallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return Container(
-        width: size.width - 50.0,
-        height: 230.0,
-        margin: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 25.0),
-        padding: EdgeInsets.all(30.0),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: <Color>[Colors.lightGreenAccent, Colors.blue],
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black45,
-              blurRadius: 10.0,
-            )
-          ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Icon(
-                  Icons.credit_card,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "**** **** **** 0000",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  "Fernando",
-                  textAlign: TextAlign.end,
-                  style: TextStyle(color: Colors.white, fontSize: 20.0),
-                ),
-              ],
-            ),
-          ],
-        ),
-      );
+    return PageView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        PageCard(),
+        PageCard(),
+        PageCard(),
+      ],
+    );
   }
 }
 
-class EventCard extends StatelessWidget {
+class User extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Container(
-      width: size.width - 50.0,
-      height: 230.0,
-      margin: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 25.0),
-      padding: EdgeInsets.all(30.0),
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: <Color>[Colors.redAccent, Colors.purpleAccent],
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black45,
-              blurRadius: 10.0,
-            )
-          ]),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Icon(
-            Icons.event,
-            color: Colors.white,
-            size: 30.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Travel",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32.0,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                "Fernando",
-                textAlign: TextAlign.end,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                ),
-              ),
-            ],
-          ),
-        ],
+      color: Colors.deepOrangeAccent,
+    );
+  }
+}
+
+class PageCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Center(child: Icon(Icons.check)),
       ),
     );
   }
