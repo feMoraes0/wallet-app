@@ -40,7 +40,7 @@ class PageCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 23.0, vertical: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                       decoration: BoxDecoration(color: Colors.deepPurpleAccent, borderRadius: BorderRadius.circular(10.0)),
                       child: Text(
                         "Transactions",
@@ -48,7 +48,7 @@ class PageCard extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 23.0, vertical: 8.0),
+                      padding: EdgeInsets.fromLTRB(0.0, 8.0, 15.0, 8.0),
                       child: Text(
                         "€ 1.000",
                         style: TextStyle(fontSize: 18.0, color: Colors.green),

@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Roboto",
       ),
       home: App(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
