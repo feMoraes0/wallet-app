@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:my_wallet/app/components/custom_header.dart';
 import 'package:my_wallet/app/wallet/page_card.dart';
 
 class Wallet extends StatefulWidget {
@@ -21,13 +22,7 @@ class _WalletState extends State<Wallet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 40.0),
-            child: Text(
-              "My Cards",
-              style: TextStyle(fontSize: 30.0),
-            ),
-          ),
+          CustomHeader(text: "My Cards"),
           Expanded(
             child: PageView(
               controller: PageController(initialPage: this.page, viewportFraction: 0.85),
