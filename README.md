@@ -1,16 +1,17 @@
-# my_wallet
+<h1 align="center">Wallet App</h1>
 
-A new Flutter project.
+## Project
 
-## Getting Started
+Different type of wallet without bank connection where you can add payments made by credit cards or organize by events using three different types of coins.
 
-This project is a starting point for a Flutter application.
+Futurely I will make back-end too with NodeJS or PHP to conclude full project.
 
-A few resources to get you started if this is your first Flutter project:
+## Prints
+>Design Concept (kind of design without real data or colors).
+<p align="center">
+<img width="250" src="https://i.pinimg.com/originals/8d/73/1f/8d731f745e724be785c63ab3ae907791.png">
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Contact
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - [LinkedIn]("https://www.linkedin.com/in/fernando-moraes-48a26916a/")
