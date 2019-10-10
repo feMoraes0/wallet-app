@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_wallet/app/cards/cards.dart';
+import 'package:my_wallet/app/app.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Roboto",
       ),
-      home: Cards(),
+      home: App(),
     );
   }
 }
