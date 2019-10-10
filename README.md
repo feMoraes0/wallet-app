@@ -14,4 +14,4 @@ Futurely I will make back-end too with NodeJS or PHP to conclude full project.
 
 ## Contact
 
- - [LinkedIn]("https://www.linkedin.com/in/fernando-moraes-48a26916a/")
+ - [LinkedIn](https://www.linkedin.com/in/fernando-moraes-48a26916a/)
