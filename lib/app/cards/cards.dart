@@ -12,7 +12,9 @@ class _CardsState extends State<Cards> {
   PageController _pageController = PageController(initialPage: 0);
 
   changePage(int index) {
-    this.setState(() { this.page = index; });
+    this.setState(() {
+      this.page = index;
+    });
     this._pageController.animateToPage(index, duration: Duration(milliseconds: 200), curve: Curves.decelerate);
   }
 
@@ -88,7 +90,7 @@ class Wallet extends StatefulWidget {
 }
 
 class _WalletState extends State<Wallet> {
-  int page = 0;
+  int page = 1;
 
   changePage(newPage) {
     this.setState(() {
@@ -98,23 +100,36 @@ class _WalletState extends State<Wallet> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: PageController(viewportFraction: 0.85),
-      scrollDirection: Axis.horizontal,
-      onPageChanged: this.changePage,
-      children: <Widget>[
-        PageCard(active: (this.page == 0) ?  true : false),
-        PageCard(active: (this.page == 1) ?  true : false),
-        PageCard(active: (this.page == 2) ?  true : false),
-        Container(color: Colors.redAccent,),
-      ],
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 40.0),
+            child: Text(
+              "My Cards",
+              style: TextStyle(fontSize: 30.0),
+            ),
+          ),
+          Expanded(
+            child: PageView(
+              controller: PageController(initialPage: this.page, viewportFraction: 0.85),
+              scrollDirection: Axis.horizontal,
+              onPageChanged: this.changePage,
+              children: <Widget>[
+                PageCard(active: (this.page == 0) ? true : false),
+                PageCard(active: (this.page == 1) ? true : false),
+                PageCard(active: (this.page == 2) ? true : false),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
 
-
 class PageCard extends StatelessWidget {
-
   bool active;
 
   PageCard({@required this.active});
@@ -123,21 +138,397 @@ class PageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Card(active: this.active),
-              ],
-            )
+        child: Column(
+            children: <Widget>[
+              Card(active: this.active),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 25.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[300],
+                      offset: Offset(2.0, 2.0),
+                      blurRadius: 2.0,
+                    )
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 23.0, vertical: 8.0),
+                      decoration: BoxDecoration(color: Colors.deepPurpleAccent, borderRadius: BorderRadius.circular(10.0)),
+                      child: Text(
+                        "Transactions",
+                        style: TextStyle(fontSize: 18.0, color: Colors.white),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 23.0, vertical: 8.0),
+                      child: Text(
+                        "€ 1.000",
+                        style: TextStyle(fontSize: 18.0, color: Colors.green),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300],
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 2.0,
+                          )
+                        ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text("Shopping", style: TextStyle(fontSize: 16.0),),
+                                      Text("10/10/2019", style: TextStyle(fontSize: 13.0, color: Colors.grey[400]),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text("€ 100.0", style: TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-        ),
+
+      ),
     );
   }
 }
 
 class Card extends StatelessWidget {
-
-  bool active;
+  bool active = false;
 
   Card({@required this.active});
 
@@ -155,4 +546,3 @@ class Card extends StatelessWidget {
     );
   }
 }
-
