@@ -41,7 +41,7 @@ class PageCard extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      decoration: BoxDecoration(color: Colors.deepPurpleAccent, borderRadius: BorderRadius.circular(10.0)),
+                      decoration: BoxDecoration(color: Color(0xff8b52f4), borderRadius: BorderRadius.circular(10.0)),
                       child: Text(
                         "Transactions",
                         style: TextStyle(fontSize: 18.0, color: Colors.white),
@@ -51,7 +51,7 @@ class PageCard extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(0.0, 8.0, 15.0, 8.0),
                       child: Text(
                         "€ 1.000",
-                        style: TextStyle(fontSize: 18.0, color: Colors.green),
+                        style: TextStyle(fontSize: 18.0, color: Colors.black),
                       ),
                     )
                   ],
@@ -80,7 +80,7 @@ class PageCard extends StatelessWidget {
                                   padding: EdgeInsets.all(10.0),
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.lightGreen,
+                                    color: Color(0xff52f490),
                                   ),
                                   child: Icon(
                                     Icons.add,
@@ -117,6 +117,35 @@ class PageCard extends StatelessWidget {
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewEntry extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
+      child: Container(
+        padding: EdgeInsets.all(5.0),
+        width: 100.0,
+        margin: const EdgeInsets.only(right: 10.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Colors.transparent,
+          border: Border.all(color: Colors.grey[400])
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.add,
+              color: Colors.grey[400],
+            ),
+            Text("New", style: TextStyle(fontSize: 16.0, color: Colors.grey[400],),)
           ],
         ),
       ),
