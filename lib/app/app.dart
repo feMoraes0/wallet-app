@@ -33,8 +33,6 @@ class _AppState extends State<App> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 10.0,
         child: Container(
           height: 55.0,
           child: Row(
@@ -68,11 +66,23 @@ class _AppState extends State<App> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-        disabledElevation: 2.0,
-      ),
+      floatingActionButton:
+        (this.page == 0) ?
+        FloatingActionButton.extended(
+          backgroundColor: Color(0xff8b52f4),
+          onPressed: null,
+          icon: Icon(Icons.add, size: 27.0,),
+          label: Text("New", style: TextStyle(fontSize: 17.0),),
+          disabledElevation: 1.0,
+        )
+        :
+        FloatingActionButton.extended(
+          backgroundColor: Color(0xff8b52f4),
+          onPressed: null,
+          icon: Icon(Icons.save, size: 21.0,),
+          label: Text("Save", style: TextStyle(fontSize: 17.0),),
+          disabledElevation: 1.0,
+        ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
