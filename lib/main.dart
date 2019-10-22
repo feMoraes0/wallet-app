@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_wallet/app/app.dart';
+import 'package:my_wallet/app/login/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Roboto",
       ),
-      home: App(),
+      home: Login(),
       debugShowCheckedModeBanner: false,
     );
   }
