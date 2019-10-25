@@ -11,7 +11,7 @@ class Login extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: Container(
         color: Colors.deepPurpleAccent,
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +32,7 @@ class Login extends StatelessWidget {
                           icon: Icon(Icons.person_pin, color: Colors.deepPurpleAccent),
                           hintText: "Username",
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
+                            borderSide: BorderSide(color: Colors.grey, width: 2.0)
                           ),
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
@@ -47,7 +47,7 @@ class Login extends StatelessWidget {
                           icon: Icon(Icons.vpn_key, color: Colors.deepPurpleAccent),
                           hintText: "Password",
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
+                            borderSide: BorderSide(color: Colors.grey, width: 2.0)
                           ),
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
@@ -69,6 +69,16 @@ class Login extends StatelessWidget {
                   ],
                 ),
               ),
+            Padding(
+              padding: const EdgeInsets.only(top: 14.0),
+              child: Text(
+                "Don't have an account? Sign up.",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0
+                ),
+              ),
+            ),
           ],
         ),
       ),
