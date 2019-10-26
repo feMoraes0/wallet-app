@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,7 +34,7 @@ class Login extends StatelessWidget {
                           fontSize: 40.0, fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      "sign in to continue...",
+                      "sign up to continue...",
                       style: TextStyle(fontSize: 30.0, color: Colors.black38),
                     ),
                   ],
@@ -49,15 +49,35 @@ class Login extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hoverColor: Colors.black,
-                        labelText: "Email",
+                        labelText: "Username",
                         labelStyle: TextStyle(color: Colors.black45),
                         focusedBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
+                          BorderSide(color: Colors.black, width: 2.0),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 2.0),
+                          BorderSide(color: Colors.grey, width: 2.0),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18.0),
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          hoverColor: Colors.black,
+                          labelText: "Email",
+                          labelStyle: TextStyle(color: Colors.black45),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.black, width: 2.0),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.grey, width: 2.0),
+                          ),
                         ),
                       ),
                     ),
@@ -72,11 +92,11 @@ class Login extends StatelessWidget {
                           labelStyle: TextStyle(color: Colors.black45),
                           focusedBorder: UnderlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.black, width: 2.0),
+                            BorderSide(color: Colors.black, width: 2.0),
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.grey, width: 2.0),
+                            BorderSide(color: Colors.grey, width: 2.0),
                           ),
                         ),
                       ),
@@ -96,7 +116,7 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 15.0, horizontal: 20.0),
                     decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                    BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -112,16 +132,16 @@ class Login extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "register");
+                  Navigator.popAndPushNamed(context, "login");
                 },
                 child: Container(
                   width: size.width,
                   margin: const EdgeInsets.only(bottom: 40.0, right: 20.0),
                   child: Text(
-                    "Don't have an account? Sign Up.",
+                    "Have an account? Sign Up.",
                     textAlign: TextAlign.end,
                     style: TextStyle(
-                      fontSize: 16.0
+                        fontSize: 16.0
                     ),
                   ),
                 ),
