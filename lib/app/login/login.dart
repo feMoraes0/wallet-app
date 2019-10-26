@@ -8,78 +8,120 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Container(
-        color: Colors.deepPurpleAccent,
-        padding: EdgeInsets.symmetric(horizontal: 15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-                width: size.width,
-                padding: const EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: Colors.white,
-                ),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Container(
+          height: size.height,
+          padding: const EdgeInsets.only(left: 50.0, top: 80.0, bottom: 80.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.person_pin, color: Colors.deepPurpleAccent),
-                          hintText: "Username",
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey, width: 2.0)
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
-                          ),
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: Icon(
+                        Icons.account_balance_wallet,
+                        color: Colors.black87,
+                        size: 45.0,
+                      ),
+                    ),
+                    Text(
+                      "Welcome,",
+                      style: TextStyle(
+                          fontSize: 40.0, fontWeight: FontWeight.w700),
+                    ),
+                    Text(
+                      "sign in to continue",
+                      style: TextStyle(fontSize: 30.0, color: Colors.black38),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: size.width,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      style: TextStyle(fontSize: 18.0),
+                      decoration: InputDecoration(
+                        hoverColor: Colors.black,
+                        labelText: "Username",
+                        labelStyle: TextStyle(color: Colors.black45),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 2.0),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.grey, width: 2.0),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextField(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18.0),
                         decoration: InputDecoration(
-                          icon: Icon(Icons.vpn_key, color: Colors.deepPurpleAccent),
-                          hintText: "Password",
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey, width: 2.0)
-                          ),
+                          hoverColor: Colors.black,
+                          labelText: "Password",
+                          labelStyle: TextStyle(color: Colors.black45),
                           focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0)
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2.0),
                           ),
-                        ),
-                      ),
-                    ),
-                    Material(
-                      color: Colors.deepPurpleAccent,
-                      borderRadius: BorderRadius.circular(5.0),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 40.0),
-                          child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 16.0),),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2.0),
+                          ),
                         ),
                       ),
                     )
                   ],
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 14.0),
-              child: Text(
-                "Don't have an account? Sign up.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0
+              Container(
+                margin: const EdgeInsets.only(bottom: 15.0),
+                child: InkWell(
+                  hoverColor: Colors.grey,
+                  onTap: () {
+                    print("hello");
+                  },
+                  child: Container(
+                    width: 180,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 20.0),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Get Started",
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        Icon(Icons.arrow_forward)
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+              Container(
+                width: size.width,
+                margin: const EdgeInsets.only(bottom: 40.0, right: 20.0),
+                child: Text(
+                  "Don't have an account? Sign Up.",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    fontSize: 16.0
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
