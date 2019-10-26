@@ -47,9 +47,10 @@ class Login extends StatelessWidget {
                   children: <Widget>[
                     TextFormField(
                       style: TextStyle(fontSize: 18.0),
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hoverColor: Colors.black,
-                        labelText: "Username",
+                        labelText: "Email",
                         labelStyle: TextStyle(color: Colors.black45),
                         focusedBorder: UnderlineInputBorder(
                           borderSide:
@@ -65,6 +66,7 @@ class Login extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 20.0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 18.0),
+                        obscureText: true,
                         decoration: InputDecoration(
                           hoverColor: Colors.black,
                           labelText: "Password",
