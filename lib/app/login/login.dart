@@ -24,7 +24,7 @@ class Login extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 25.0),
                       child: Icon(
-                        Icons.account_balance_wallet,
+                        Icons.attach_money,
                         color: Colors.black87,
                         size: 45.0,
                       ),
