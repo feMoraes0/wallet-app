@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class Register extends StatelessWidget {
@@ -7,145 +5,173 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.indigoAccent,
       body: SingleChildScrollView(
         child: Container(
           height: size.height,
-          padding: const EdgeInsets.only(left: 50.0, top: 80.0, bottom: 80.0),
+          padding: const EdgeInsets.symmetric(vertical: 80.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
+                margin: const EdgeInsets.only(left: 40.0, top: 80.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 25.0),
-                      child: Icon(
-                        Icons.credit_card,
+                    Text(
+                      "Someone New!",
+                      style: TextStyle(
+                        fontSize: 38.0,
+                        fontWeight: FontWeight.w700,
                         color: Colors.black87,
-                        size: 45.0,
                       ),
                     ),
                     Text(
-                      "Welcome,",
-                      style: TextStyle(
-                          fontSize: 40.0, fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      "sign up to continue...",
-                      style: TextStyle(fontSize: 30.0, color: Colors.black38),
+                      "You are welcome here.",
+                      style: TextStyle(fontSize: 25.0, color: Colors.black38),
                     ),
                   ],
                 ),
               ),
               Container(
                 width: size.width,
-                child: Column(
+                margin: const EdgeInsets.only(top: 65.0, bottom: 75.0),
+                child: Stack(
                   children: <Widget>[
-                    TextFormField(
-                      style: TextStyle(fontSize: 18.0),
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hoverColor: Colors.black,
-                        labelText: "Username",
-                        labelStyle: TextStyle(color: Colors.black45),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                          BorderSide(color: Colors.black, width: 2.0),
+                    Container(
+                      width: size.width - 40.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(180.0),
+                          bottomRight: Radius.circular(180.0),
                         ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                          BorderSide(color: Colors.grey, width: 2.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 3.0,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: size.width - 50.0,
+                            margin: const EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 7.0),
+                            child: TextFormField(
+                              style: TextStyle(fontSize: 18.0),
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                hoverColor: Colors.black,
+                                hintText: "Username",
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: size.width - 50.0,
+                            margin: const EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 7.0),
+                            child: TextFormField(
+                              style: TextStyle(fontSize: 18.0),
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                hoverColor: Colors.black,
+                                hintText: "Email",
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: size.width - 50.0,
+                            margin: const EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 7.0),
+                            child: TextFormField(
+                              style: TextStyle(fontSize: 18.0),
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                  hoverColor: Colors.black,
+                                  hintText: "Password",
+                                  border: InputBorder.none),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      left: size.width - 80,
+                      top: 60.0,
+                      child: GestureDetector(
+                        onTap: () {
+                          print("enviando...");
+                        },
+                        child: Container(
+                          height: 65.0,
+                          width: 65.0,
+                          decoration: BoxDecoration(
+                            color: Colors.indigoAccent,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(3.0, 3.0),
+                                blurRadius: 3.0,
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.send,
+                              color: Colors.white,
+                              size: 33.0,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: TextFormField(
-                        style: TextStyle(fontSize: 18.0),
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          hoverColor: Colors.black,
-                          labelText: "Email",
-                          labelStyle: TextStyle(color: Colors.black45),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 2.0),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.grey, width: 2.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: TextFormField(
-                        style: TextStyle(fontSize: 18.0),
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hoverColor: Colors.black,
-                          labelText: "Password",
-                          labelStyle: TextStyle(color: Colors.black45),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 2.0),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.grey, width: 2.0),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 15.0),
-                child: InkWell(
-                  hoverColor: Colors.grey,
-                  onTap: () {
-                    print("hello");
-                  },
-                  child: Container(
-                    width: 180,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15.0, horizontal: 20.0),
-                    decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "Get Started",
-                          style: TextStyle(fontSize: 18.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12.0,
+                        horizontal: 30.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20.0),
+                          bottomRight: Radius.circular(20.0),
                         ),
-                        Icon(Icons.arrow_forward)
-                      ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 3.0,
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.indigoAccent,
+                            fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context, "login");
-                },
-                child: Container(
-                  width: size.width,
-                  margin: const EdgeInsets.only(bottom: 40.0, right: 20.0),
-                  child: Text(
-                    "Have an account? Sign Up.",
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
-                        fontSize: 16.0
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
         ),

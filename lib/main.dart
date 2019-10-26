@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         "register": (context) => Register(),
       },
       theme: ThemeData(
-        fontFamily: "Roboto",
+        fontFamily: "Nunito",
       ),
       home: Login(),
       debugShowCheckedModeBanner: false,
