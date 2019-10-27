@@ -5,7 +5,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.lightBlue,
       body: SingleChildScrollView(
         child: Container(
           height: size.height,
@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 38.0,
                         fontWeight: FontWeight.w700,
-                        color: Colors.black87,
+                        color: Colors.white,
                       ),
                     ),
                     Text(
@@ -98,7 +98,7 @@ class Login extends StatelessWidget {
                           height: 65.0,
                           width: 65.0,
                           decoration: BoxDecoration(
-                            color: Colors.indigoAccent,
+                            color: Colors.lightBlue,
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
@@ -151,7 +151,7 @@ class Login extends StatelessWidget {
                         "Register",
                         style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.indigoAccent,
+                            color: Colors.lightBlue,
                             fontWeight: FontWeight.w700),
                       ),
                     ),
