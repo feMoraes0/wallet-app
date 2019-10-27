@@ -21,7 +21,7 @@ class CustomHeader extends StatelessWidget {
             width: 40.0,
             height: 40.0,
             decoration: BoxDecoration(
-              color: Colors.lightBlue[300],
+              color: Colors.lightBlue[200],
               shape: BoxShape.circle,
               border: Border.all(color: Colors.white, width: 2.0),
               boxShadow: [

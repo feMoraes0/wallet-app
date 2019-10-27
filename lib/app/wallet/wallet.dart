@@ -25,9 +25,13 @@ class _WalletState extends State<Wallet> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             CustomHeader(text: "My Cards"),
-            Expanded(
+            Container(
+              height: 215,
               child: PageView(
-                controller: PageController(initialPage: this.page, viewportFraction: 0.85),
+                controller: PageController(
+                  initialPage: this.page,
+                  viewportFraction: 0.90,
+                ),
                 scrollDirection: Axis.horizontal,
                 onPageChanged: this.changePage,
                 children: <Widget>[
@@ -37,13 +41,26 @@ class _WalletState extends State<Wallet> {
                 ],
               ),
             ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35.0),
+                    topRight: Radius.circular(35.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[300],
+                      blurRadius: 10.0,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
