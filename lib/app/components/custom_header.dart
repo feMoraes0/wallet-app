@@ -15,17 +15,25 @@ class CustomHeader extends StatelessWidget {
         children: <Widget>[
           Text(
             this.text,
-            style: TextStyle(fontSize: 30.0),
+            style: TextStyle(fontSize: 33.0),
           ),
-          SizedBox(
-            width: 25.0,
-            height: 25.0,
-            child: CircularProgressIndicator(
-              backgroundColor: Color(0xff8b52f4),
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey[200]),
-              strokeWidth: 1.5,
+          Container(
+            width: 40.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              color: Colors.lightBlue[300],
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[400],
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 2.0
+                )
+              ]
             ),
-          ),
+            child: Icon(Icons.person_outline, color: Colors.white, size: 22.0,),
+          )
         ],
       ),
     );

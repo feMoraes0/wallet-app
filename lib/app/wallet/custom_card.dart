@@ -52,7 +52,7 @@ class CustomCard extends StatelessWidget {
                     child: Text(
                       "**** **** **** 0000",
                       style: TextStyle(
-                        fontSize: 31.0,
+                        fontSize: 30.0,
                         color: Colors.white
                       ),
                     ),

@@ -18,24 +18,27 @@ class _WalletState extends State<Wallet> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          CustomHeader(text: "My Cards"),
-          Expanded(
-            child: PageView(
-              controller: PageController(initialPage: this.page, viewportFraction: 0.85),
-              scrollDirection: Axis.horizontal,
-              onPageChanged: this.changePage,
-              children: <Widget>[
-                PageCard(active: (this.page == 0) ? true : false),
-                PageCard(active: (this.page == 1) ? true : false),
-                PageCard(active: (this.page == 2) ? true : false),
-              ],
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            CustomHeader(text: "My Cards"),
+            Expanded(
+              child: PageView(
+                controller: PageController(initialPage: this.page, viewportFraction: 0.85),
+                scrollDirection: Axis.horizontal,
+                onPageChanged: this.changePage,
+                children: <Widget>[
+                  PageCard(active: (this.page == 0) ? true : false),
+                  PageCard(active: (this.page == 1) ? true : false),
+                  PageCard(active: (this.page == 2) ? true : false),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
