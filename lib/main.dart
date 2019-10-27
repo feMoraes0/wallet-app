@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_wallet/app/app.dart';
 import 'package:my_wallet/app/login/login.dart';
 import 'package:my_wallet/app/register/register.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "login": (context) => Login(),
         "register": (context) => Register(),
+        "home": (context) => App(),
       },
       theme: ThemeData(
         fontFamily: "Nunito",

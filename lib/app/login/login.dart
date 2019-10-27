@@ -92,7 +92,7 @@ class Login extends StatelessWidget {
                       top: 25.0,
                       child: GestureDetector(
                         onTap: () {
-                          print("enviando...");
+                          Navigator.pushNamed(context, "home");
                         },
                         child: Container(
                           height: 65.0,
