@@ -22,12 +22,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         fontFamily: "Roboto",
-        primaryColor: Colors.redAccent[400]
+        primaryColor: Colors.redAccent[400],
+        cursorColor: Colors.redAccent[400]
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         fontFamily: "Roboto",
-        primaryColor: Colors.redAccent
+        primaryColor: Colors.redAccent,
+        cursorColor: Colors.redAccent
       ),
       home: App(),
       debugShowCheckedModeBanner: false,
