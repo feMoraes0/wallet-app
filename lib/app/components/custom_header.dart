@@ -21,16 +21,9 @@ class CustomHeader extends StatelessWidget {
             width: 40.0,
             height: 40.0,
             decoration: BoxDecoration(
-              color: Colors.lightBlue[200],
+              color: Theme.of(context).primaryColor,
               shape: BoxShape.circle,
               border: Border.all(color: Colors.white, width: 2.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey[400],
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 2.0
-                )
-              ]
             ),
             child: Icon(Icons.person_outline, color: Colors.white, size: 22.0,),
           )
