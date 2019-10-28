@@ -1,178 +1,172 @@
 import 'package:flutter/material.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
+  @override
+  _RegisterState createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  var obstureText = true;
+
+  void updateObstureText() {
+    this.setState(() {
+      this.obstureText = !this.obstureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
-      body: SingleChildScrollView(
-        child: Container(
-          height: size.height,
-          padding: const EdgeInsets.symmetric(vertical: 80.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(left: 40.0, top: 80.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Someone New!",
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            height: size.height,
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Wallet App",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 35.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Username",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10.0),
+                        child: TextField(
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            hoverColor: Colors.red,
+                            contentPadding: const EdgeInsets.all(15.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey[300],
+                                width: 2.0,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Email",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10.0),
+                        child: TextField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hoverColor: Colors.red,
+                            contentPadding: const EdgeInsets.all(15.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey[300],
+                                width: 2.0,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15.0, bottom: 25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Password",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 12.0),
+                        child: TextField(
+                          obscureText: this.obstureText,
+                          decoration: InputDecoration(
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  this.updateObstureText();
+                                },
+                                child: Icon(
+                                  (this.obstureText) ? Icons.vpn_key : Icons.remove_red_eye,
+                                  color: (this.obstureText) ? Colors.grey : Colors.red,
+                                )),
+                            contentPadding: const EdgeInsets.all(15.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey[300],
+                                width: 2.0,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, "home");
+                  },
+                  child: Container(
+                    width: size.width,
+                    padding: const EdgeInsets.symmetric(vertical: 12.0),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Text(
+                      "Register",
                       style: TextStyle(
-                        fontSize: 38.0,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 20.0,
                         color: Colors.white,
                       ),
-                    ),
-                    Text(
-                      "You are welcome here.",
-                      style: TextStyle(fontSize: 25.0, color: Colors.black38),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: size.width,
-                margin: const EdgeInsets.only(top: 65.0, bottom: 75.0),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      width: size.width - 40.0,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(180.0),
-                          bottomRight: Radius.circular(180.0),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(3.0, 3.0),
-                            blurRadius: 3.0,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            width: size.width - 50.0,
-                            margin: const EdgeInsets.only(left: 20.0),
-                            padding: const EdgeInsets.symmetric(vertical: 7.0),
-                            child: TextFormField(
-                              style: TextStyle(fontSize: 18.0),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                hoverColor: Colors.black,
-                                hintText: "Username",
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: size.width - 50.0,
-                            margin: const EdgeInsets.only(left: 20.0),
-                            padding: const EdgeInsets.symmetric(vertical: 7.0),
-                            child: TextFormField(
-                              style: TextStyle(fontSize: 18.0),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                hoverColor: Colors.black,
-                                hintText: "Email",
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: size.width - 50.0,
-                            margin: const EdgeInsets.only(left: 20.0),
-                            padding: const EdgeInsets.symmetric(vertical: 7.0),
-                            child: TextFormField(
-                              style: TextStyle(fontSize: 18.0),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                  hoverColor: Colors.black,
-                                  hintText: "Password",
-                                  border: InputBorder.none),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      left: size.width - 80,
-                      top: 60.0,
-                      child: GestureDetector(
-                        onTap: () {
-                          print("enviando...");
-                        },
-                        child: Container(
-                          height: 65.0,
-                          width: 65.0,
-                          decoration: BoxDecoration(
-                            color: Colors.lightBlue,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black26,
-                                offset: Offset(3.0, 3.0),
-                                blurRadius: 3.0,
-                              ),
-                            ],
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.send,
-                              color: Colors.white,
-                              size: 33.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12.0,
-                        horizontal: 30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(3.0, 3.0),
-                            blurRadius: 3.0,
-                          ),
-                        ],
-                      ),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.lightBlue,
-                            fontWeight: FontWeight.w700),
-                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
