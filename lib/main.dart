@@ -20,7 +20,14 @@ class MyApp extends StatelessWidget {
         "home": (context) => Wallet(),
       },
       theme: ThemeData(
+        brightness: Brightness.light,
         fontFamily: "Roboto",
+        primaryColor: Colors.redAccent[400]
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: "Roboto",
+        primaryColor: Colors.redAccent
       ),
       home: App(),
       debugShowCheckedModeBanner: false,

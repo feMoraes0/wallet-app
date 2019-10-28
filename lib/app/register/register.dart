@@ -19,7 +19,6 @@ class _RegisterState extends State<Register> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -49,7 +48,7 @@ class _RegisterState extends State<Register> {
                         child: TextField(
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
-                            hoverColor: Colors.red,
+                            hoverColor: Theme.of(context).primaryColor,
                             contentPadding: const EdgeInsets.all(15.0),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -59,7 +58,7 @@ class _RegisterState extends State<Register> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.red,
+                                color: Theme.of(context).primaryColor,
                                 width: 2.0,
                               ),
                             ),
@@ -83,7 +82,7 @@ class _RegisterState extends State<Register> {
                         child: TextField(
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            hoverColor: Colors.red,
+                            hoverColor: Theme.of(context).primaryColor,
                             contentPadding: const EdgeInsets.all(15.0),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -93,7 +92,7 @@ class _RegisterState extends State<Register> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.red,
+                                color: Theme.of(context).primaryColor,
                                 width: 2.0,
                               ),
                             ),
@@ -123,7 +122,7 @@ class _RegisterState extends State<Register> {
                                 },
                                 child: Icon(
                                   (this.obstureText) ? Icons.vpn_key : Icons.remove_red_eye,
-                                  color: (this.obstureText) ? Colors.grey : Colors.red,
+                                  color: (this.obstureText) ? Colors.grey : Theme.of(context).primaryColor,
                                 )),
                             contentPadding: const EdgeInsets.all(15.0),
                             enabledBorder: OutlineInputBorder(
@@ -134,7 +133,7 @@ class _RegisterState extends State<Register> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.red,
+                                color: Theme.of(context).primaryColor,
                                 width: 2.0,
                               ),
                             ),
@@ -152,7 +151,7 @@ class _RegisterState extends State<Register> {
                     width: size.width,
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Text(

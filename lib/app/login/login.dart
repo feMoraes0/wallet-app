@@ -7,7 +7,6 @@ class Login extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -37,7 +36,7 @@ class Login extends StatelessWidget {
                         child: TextField(
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            hoverColor: Colors.red,
+                            hoverColor: Theme.of(context).primaryColor,
                             contentPadding: const EdgeInsets.all(15.0),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -47,7 +46,7 @@ class Login extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.red,
+                                color: Theme.of(context).primaryColor,
                                 width: 2.0,
                               ),
                             ),
@@ -80,7 +79,7 @@ class Login extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.red,
+                                color: Theme.of(context).primaryColor,
                                 width: 2.0,
                               ),
                             ),
@@ -98,7 +97,7 @@ class Login extends StatelessWidget {
                     width: size.width,
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Text(

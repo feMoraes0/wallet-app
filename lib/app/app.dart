@@ -5,7 +5,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,7 +23,7 @@ class App extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 margin: const EdgeInsets.only(top: 30.0, bottom: 20.0),
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 child: Text(
@@ -45,7 +44,7 @@ class App extends StatelessWidget {
                 width: size.width * 0.80,
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 child: Text(
