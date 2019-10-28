@@ -25,8 +25,17 @@ class CustomCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              Container(
+                child: Text(
+                  "TOTAL: 0000.00",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
               Icon(
                 Icons.delete_outline,
                 size: 24.0,
@@ -52,7 +61,7 @@ class CustomCard extends StatelessWidget {
                     child: Text(
                       "**** **** **** 0000",
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 33.0,
                         color: Colors.white
                       ),
                     ),

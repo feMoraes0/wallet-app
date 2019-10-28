@@ -15,17 +15,16 @@ class CustomHeader extends StatelessWidget {
         children: <Widget>[
           Text(
             this.text,
-            style: TextStyle(fontSize: 33.0),
+            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
           ),
           Container(
-            width: 40.0,
-            height: 40.0,
+            width: 32.0,
+            height: 32.0,
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2.0),
             ),
-            child: Icon(Icons.person_outline, color: Colors.white, size: 22.0,),
+            child: Icon(Icons.person_outline, color: Colors.white, size: 20.0,),
           )
         ],
       ),
