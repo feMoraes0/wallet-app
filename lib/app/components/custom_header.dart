@@ -8,23 +8,23 @@ class CustomHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
             this.text,
-            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
           ),
           Container(
-            width: 32.0,
-            height: 32.0,
-            decoration: BoxDecoration(
+            width: 25.0,
+            height: 25.0,
+            child: Icon(
+              Icons.person_outline,
               color: Theme.of(context).primaryColor,
-              shape: BoxShape.circle,
+              size: 25.0,
             ),
-            child: Icon(Icons.person_outline, color: Colors.white, size: 20.0,),
           )
         ],
       ),
