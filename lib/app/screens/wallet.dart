@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:my_wallet/app/components/custom_header.dart';
-import 'package:my_wallet/app/wallet/custom_card.dart';
+import 'package:my_wallet/app/components/custom_card.dart';
 
 class Wallet extends StatefulWidget {
   @override

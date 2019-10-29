@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_wallet/app/app.dart';
-import 'package:my_wallet/app/login/login.dart';
-import 'package:my_wallet/app/register/register.dart';
+import 'package:my_wallet/app/screens/login.dart';
+import 'package:my_wallet/app/screens/register.dart';
 
-import 'package:my_wallet/app/wallet/wallet.dart';
+import 'package:my_wallet/app/screens/wallet.dart';
 
 void main() => runApp(MyApp());
 
