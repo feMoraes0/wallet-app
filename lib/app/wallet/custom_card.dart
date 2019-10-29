@@ -29,10 +29,11 @@ class CustomCard extends StatelessWidget {
             children: <Widget>[
               Container(
                 child: Text(
-                  "TOTAL: 0000.00",
+                  "\$ 0000.00",
                   style: TextStyle(
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
-                    fontSize: 16.0,
+                    fontSize: 19.0,
                   ),
                 ),
               ),
@@ -89,7 +90,8 @@ class CustomCard extends StatelessWidget {
                     child: Text(
                       "Fernando de Moraes",
                       style: TextStyle(
-                        fontSize: 15.0,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.0,
                         color: Colors.white
                       ),
                     ),
@@ -112,7 +114,8 @@ class CustomCard extends StatelessWidget {
                     child: Text(
                       "10/10",
                       style: TextStyle(
-                        fontSize: 15.0,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.0,
                         color: Colors.white
                       ),
                     ),

@@ -23,88 +23,89 @@ class _WalletState extends State<Wallet> {
         return AlertDialog(
           content: SingleChildScrollView(
             child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Title",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 15.0),
-                            child: TextField(
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                hoverColor: Theme.of(context).primaryColor,
-                                contentPadding: const EdgeInsets.all(15.0),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey[300],
-                                    width: 2.0,
-                                  ),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Title",
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10.0),
+                          child: TextField(
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              hoverColor: Theme.of(context).primaryColor,
+                              contentPadding: const EdgeInsets.all(15.0),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[300],
+                                  width: 2.0,
                                 ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 2.0,
-                                  ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2.0,
                                 ),
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Value",
-                            style: TextStyle(fontSize: 18.0),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 15.0),
-                            child: TextField(
-                              keyboardType:
-                                  TextInputType.numberWithOptions(decimal: true),
-                              decoration: InputDecoration(
-                                hoverColor: Theme.of(context).primaryColor,
-                                contentPadding: const EdgeInsets.all(15.0),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey[300],
-                                    width: 2.0,
-                                  ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Value",
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10.0),
+                          child: TextField(
+                            keyboardType: TextInputType.numberWithOptions(decimal: true),
+                            decoration: InputDecoration(
+                              hoverColor: Theme.of(context).primaryColor,
+                              contentPadding: const EdgeInsets.all(15.0),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[300],
+                                  width: 2.0,
                                 ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 2.0,
-                                  ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2.0,
                                 ),
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
           ),
-
           actions: <Widget>[
             FlatButton(
-              child: Text('Save',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).primaryColor,
-                  )),
+              color: Theme.of(context).primaryColor,
+              child: Text(
+                'Save',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
