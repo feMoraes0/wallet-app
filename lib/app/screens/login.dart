@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_wallet/app/auxiliars/custom_snackbar.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -32,38 +33,10 @@ class _LoginState extends State<Login> {
       );
     } else if (status == 400) {
       final body = json.decode(response.body);
-      Scaffold.of(localContext).showSnackBar(
-        SnackBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          content: Text(
-            body["msg"],
-            style: TextStyle(color: Colors.white, fontSize: 16.0),
-          ),
-          action: SnackBarAction(
-            label: "Undo",
-            textColor: Colors.white,
-            onPressed: () {
+      CustomSnackBar(localContext, body["msg"]);
 
-            },
-          ),
-        ),
-      );
     } else {
-      Scaffold.of(localContext).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Server side error, try again later.",
-            style: TextStyle(color: Colors.white, fontSize: 18.0),
-          ),
-          action: SnackBarAction(
-            label: "Undo",
-            textColor: Colors.white,
-            onPressed: () {
-
-            },
-          ),
-        ),
-      );
+      CustomSnackBar(localContext, "Server side error, try again later.");
     }
   }
 
@@ -171,7 +144,7 @@ class _LoginState extends State<Login> {
                       child: Text(
                         "Log in",
                         style: TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 18.0,
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
