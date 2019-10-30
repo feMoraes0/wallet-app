@@ -34,7 +34,6 @@ class _LoginState extends State<Login> {
     } else if (status == 400) {
       final body = json.decode(response.body);
       CustomSnackBar(localContext, body["msg"]);
-
     } else {
       CustomSnackBar(localContext, "Server side error, try again later.");
     }
