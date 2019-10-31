@@ -24,38 +24,6 @@ class _WalletState extends State<Wallet> {
     });
   }
 
-  Future<void> _neverSatisfied() async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[],
-              ),
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              color: Theme.of(context).primaryColor,
-              child: Text(
-                'Save',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   showBottom(BuildContext context) {
     showBottomSheet(
       context: context,
