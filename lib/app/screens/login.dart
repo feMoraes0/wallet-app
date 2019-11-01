@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_wallet/app/auxiliars/custom_snackbar.dart';
+import 'package:my_wallet/app/models/User.dart';
+import 'package:my_wallet/app/screens/wallet.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -26,10 +28,8 @@ class _LoginState extends State<Login> {
 
     if (status == 200) {
       final body = json.decode(response.body);
-      Navigator.of(context).pushNamed(
-        "home",
-        arguments: {'id': body["user"]["id"]},
-      );
+      // Navigator.of(context).pushNamed("home", arguments: User.fromMappedJSON(body));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Wallet(User.fromMappedJSON(body))));
     } else if (status == 400) {
       final body = json.decode(response.body);
       CustomSnackBar(localContext, body["msg"]);

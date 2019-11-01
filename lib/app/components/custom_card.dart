@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
   var active;
+  String label;
 
-  CustomCard({@required this.active});
+  CustomCard({@required this.active, @required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CustomCard extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: <Color>[Colors.purpleAccent, Colors.redAccent],
         ),
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(15.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +61,7 @@ class CustomCard extends StatelessWidget {
                   ),
                   Container(
                     child: Text(
-                      "**** **** **** 0000",
+                      this.label,
                       style: TextStyle(
                         fontSize: 33.0,
                         color: Colors.white
