@@ -17,19 +17,33 @@ class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
 
   Future<void> getUser(
-      String email, String password, BuildContext localContext) async {
+    String email,
+    String password,
+    BuildContext localContext,
+  ) async {
+    CustomSnackBar(localContext, "Searching...");
+
     final response = await http.post(
       "https://mywallet-api.herokuapp.com/login",
       headers: {"Content-Type": "application/json"},
-      body: json.encode({'email': email, 'password': password}),
+      body: json.encode(
+        {'email': email, 'password': password},
+      ),
     );
-
+    Scaffold.of(localContext).hideCurrentSnackBar();
+    
     final status = response.statusCode;
 
     if (status == 200) {
       final body = json.decode(response.body);
-      // Navigator.of(context).pushNamed("home", arguments: User.fromMappedJSON(body));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Wallet(User.fromMappedJSON(body))));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Wallet(
+            User.fromMappedJSON(body),
+          ),
+        ),
+      );
     } else if (status == 400) {
       final body = json.decode(response.body);
       CustomSnackBar(localContext, body["msg"]);
