@@ -15,6 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final FocusNode passwordFocus = new FocusNode();
 
   Future<void> getUser(
     String email,
@@ -87,6 +88,9 @@ class _LoginState extends State<Login> {
                           child: TextField(
                             controller: this._emailController,
                             keyboardType: TextInputType.emailAddress,
+                            onEditingComplete: () {
+                              FocusScope.of(context).requestFocus(this.passwordFocus);
+                            },
                             decoration: InputDecoration(
                               hoverColor: Theme.of(context).primaryColor,
                               contentPadding: const EdgeInsets.all(15.0),
@@ -120,6 +124,7 @@ class _LoginState extends State<Login> {
                         Container(
                           margin: const EdgeInsets.only(top: 10.0),
                           child: TextField(
+                            focusNode: this.passwordFocus,
                             controller: this._passwordController,
                             obscureText: true,
                             decoration: InputDecoration(

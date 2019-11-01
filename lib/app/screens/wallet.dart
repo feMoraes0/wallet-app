@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 
 import 'package:http/http.dart' as http;
 import 'package:my_wallet/app/models/User.dart';
+import 'package:my_wallet/app/screens/new_card_form.dart';
 
 class Wallet extends StatefulWidget {
   final User user;
@@ -51,7 +52,17 @@ class _WalletState extends State<Wallet> {
                 }
 
                 if (index == this.cards["rows"].length + 1) {
-                  return NewCard();
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewCardForm(),
+                        ),
+                      );
+                    },
+                    child: NewCard(),
+                  );
                 }
 
                 var tempCard = this.cards["rows"][index - 1];
