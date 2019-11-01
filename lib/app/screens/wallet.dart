@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
-import 'package:my_wallet/app/components/custom_header.dart';
-import 'package:my_wallet/app/components/custom_card.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:my_wallet/app/models/User.dart';
@@ -38,94 +36,38 @@ class _WalletState extends State<Wallet> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
-        body: ListView.builder(
-      itemCount: this.cards["rows"].length + 2,
-      itemBuilder: (BuildContext context, int index) {
-        if (index == 0) {
-          return Container(
-            height: 140,
-            padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-            ),
-            child: Card(
-              icon: Icons.person_outline,
-              label: "Fernando de Moraes",
-            ),
-          );
-        }
+      body: (cards == null)
+          ? Loading()
+          : ListView.builder(
+              itemCount: this.cards["rows"].length + 2,
+              itemBuilder: (BuildContext context, int index) {
+                if (index == 0) {
+                  return CardDivision(
+                    shadow: false,
+                    icon: Icons.person_outline,
+                    label: "Fernando de Moraes",
+                  );
+                }
 
-        if (index == this.cards["rows"].length + 1) {
-          return Container(
-            height: 220,
-            padding: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black45,
-                  blurRadius: 2.0,
-                  offset: Offset(0, -3),
-                )
-              ],
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Colors.blueAccent,
-                    Colors.lightBlueAccent,
-                  ],
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Icon(
-                    Icons.add,
-                    size: 30.0,
-                    color: Theme.of(context).backgroundColor,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        "ADD NEW CARD",
-                        style: TextStyle(
-                            fontSize: 23.0,
-                            color: Theme.of(context).backgroundColor),
-                      ),
-                      Text(
-                        "Cards can be for an especific\nevent or all life as credit or debit",
-                        maxLines: 5,
-                        overflow: TextOverflow.clip,
-                        textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            color: Theme.of(context).backgroundColor),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
-        }
+                if (index == this.cards["rows"].length + 1) {
+                  return NewCard();
+                }
 
-        return CardDivision(
-          shadow: true,
-        );
-      },
-    ));
+                var tempCard = this.cards["rows"][index - 1];
+
+                return CardDivision(
+                  shadow: true,
+                  icon: (tempCard["type"] == "credit")
+                      ? Icons.account_balance_wallet
+                      : Icons.event_note,
+                  label: (tempCard["type"] == "credit")
+                      ? "**** **** **** " + tempCard["label"]
+                      : tempCard["label"],
+                );
+              },
+            ),
+    );
   }
 
   @override
@@ -135,32 +77,72 @@ class _WalletState extends State<Wallet> {
   }
 }
 
+class Loading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width,
+      height: size.height,
+      color: Theme.of(context).backgroundColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CircularProgressIndicator(
+            backgroundColor: Theme.of(context).backgroundColor,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Theme.of(context).primaryColor,
+            ),
+            strokeWidth: 2.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Text(
+              "Loading cards...",
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class CardDivision extends StatelessWidget {
   final bool shadow;
+  final IconData icon;
+  final String label;
 
-  CardDivision({@required this.shadow});
+  CardDivision({
+    @required this.shadow,
+    @required this.icon,
+    @required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 140,
       padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-      decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
-        boxShadow: [
-          (this.shadow)
-              ? BoxShadow(
+      decoration: (this.shadow)
+          ? BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+              boxShadow: [
+                BoxShadow(
                   color: Colors.black45,
                   blurRadius: 2.0,
                   offset: Offset(0, -3),
-                )
-              : BoxShadow(),
-        ],
-      ),
-      child: Card(
-        icon: Icons.account_balance_wallet,
-        label: "**** **** **** 0000",
-      ),
+                ),
+              ],
+            )
+          : BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+            ),
+      child: Card(icon: this.icon, label: this.label),
     );
   }
 }
@@ -204,6 +186,70 @@ class Card extends StatelessWidget {
                 fontSize: 23.0, color: Theme.of(context).backgroundColor),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NewCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black45,
+            blurRadius: 2.0,
+            offset: Offset(0, -3),
+          )
+        ],
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.blueAccent,
+              Colors.lightBlueAccent,
+            ],
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Icon(
+              Icons.add,
+              size: 30.0,
+              color: Theme.of(context).backgroundColor,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  "ADD NEW CARD",
+                  style: TextStyle(
+                      fontSize: 23.0, color: Theme.of(context).backgroundColor),
+                ),
+                Text(
+                  "Cards can be for an especific\nevent or all life as credit or debit",
+                  maxLines: 5,
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                      fontSize: 16.0, color: Theme.of(context).backgroundColor),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
