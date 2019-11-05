@@ -115,9 +115,7 @@ class _NewCardFormState extends State<NewCardForm> {
                                   setState(() {
                                     this._radioType = "event";
                                     this._labelController.value =
-                                        TextEditingValue(
-                                      text: ""
-                                    );
+                                        TextEditingValue(text: "");
                                   });
                                 },
                                 child: Container(
@@ -341,20 +339,22 @@ class _NewCardFormState extends State<NewCardForm> {
                             ),
                             Text(
                               "Choose your card color.",
-                              style: TextStyle(fontSize: 16.0),
+                              style: TextStyle(fontSize: 15.0),
                             )
                           ],
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Color(0xFF69F0AE),
-                                    Color(0xFFFFEB3B)
-                                  ])),
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFF69F0AE),
+                                Color(0xFFFFEB3B),
+                              ],
+                            ),
+                          ),
                           height: 45,
                           width: 45,
                         ),
