@@ -1,8 +1,8 @@
 <h1 align="center">Wallet App</h1>
 
-## Project
+## Objective
 
-A different type of wallet without bank connection where you can add payments made by credit cards or organize by events using three different types of coins.
+Make a different type of wallet without bank connection where you can add payments made by credit cards or organize by events using three different types of coins.
 
 The back-end can be found on [GitHub](https://github.com/feMoraes0/wallet-api) or [Heroku](https://mywallet-api.herokuapp.com/) using NodeJS, Sequelize and PostgreSQL.
 
@@ -35,6 +35,10 @@ $ flutter packages get
 $ flutter run
 ```
 
-## Contact
+## Credits
+  - Start, login and register screens were inspired by <a target="_blank" href="https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=en">Twitch Design</a>.
+  - <a target="_blank" href="https://dribbble.com/shots/2876122-For-credit-card-statement-inquiring-and-payment">Home Page Design</a>
 
- - [LinkedIn](https://www.linkedin.com/in/fernando-moraes-48a26916a/)
+## Contact
+  - <a target="_blank" href="https://www.linkedin.com/in/fernando-moraes-48a26916a/">LinkedIn</a>
+  - <a target="_blank" href="mailto:fernandomoraes.lopes@gmail.com">E-mail</a>
